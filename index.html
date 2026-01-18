@@ -391,9 +391,380 @@
         font-size: 0.8rem;
       }
     }
+
+    /* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, var(--shadow), var(--void-black));
+  border: 1px solid var(--static);
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+body.ascended-mode .modal-content {
+  border-color: var(--ascended-gold);
+  box-shadow: 0 0 40px rgba(201, 162, 39, 0.2);
+}
+
+body.dread-mode .modal-content {
+  border-color: var(--dread-red);
+  box-shadow: 0 0 40px rgba(139, 0, 0, 0.3);
+}
+
+.modal-header {
+  padding: 25px 25px 15px;
+  border-bottom: 1px solid var(--static);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-title {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.modal-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+body.ascended-mode .modal-letter { color: var(--ascended-gold); }
+body.dread-mode .modal-letter { color: var(--dread-glow); }
+
+.modal-concept {
+  font-style: italic;
+  color: var(--bone-white);
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--bone-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.modal-close:hover {
+  opacity: 1;
+}
+
+.modal-body {
+  padding: 25px;
+}
+
+.modal-glyph-display {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0 30px;
+}
+
+.modal-glyph-display .glyph-svg {
+  width: 120px;
+  height: 120px;
+}
+
+.modal-name {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  padding: 15px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+  margin-bottom: 25px;
+}
+
+body.ascended-mode .modal-name {
+  color: var(--ascended-gold);
+  border-left: 3px solid var(--ascended-gold);
+}
+
+body.dread-mode .modal-name {
+  color: var(--dread-glow);
+  border-left: 3px solid var(--dread-red);
+}
+
+.modal-section {
+  margin-bottom: 20px;
+}
+
+.modal-section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
+.modal-section p {
+  line-height: 1.7;
+  color: var(--bone-white);
+  opacity: 0.9;
+}
+
+.modal-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid var(--static);
+  margin-top: 25px;
+}
+
+.modal-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.modal-meta-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.modal-meta-value {
+  font-size: 0.9rem;
+}
+
+/* Make cards clickable */
+.glyph-card {
+  cursor: pointer;
+}
+
+/* Improved Mobile Styles */
+@media (max-width: 768px) {
+  header {
+    padding: 30px 15px 25px;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.15em;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .mode-toggle {
+    margin: 25px auto;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  .mode-btn {
+    padding: 12px 15px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .aspect-group {
+    margin-bottom: 40px;
+    padding: 0 15px;
+  }
+  
+  .aspect-title {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  .glyph-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  
+  .glyph-card {
+    padding: 15px;
+  }
+  
+  .glyph-header {
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .glyph-letter {
+    font-size: 1.4rem;
+  }
+  
+  .glyph-concept {
+    font-size: 0.8rem;
+  }
+  
+  .glyph-geometry {
+    font-size: 0.65rem;
+  }
+  
+  .glyph-display {
+    height: 80px;
+    margin: 10px 0;
+  }
+  
+  .glyph-svg {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .glyph-name {
+    font-size: 0.7rem;
+    padding: 8px;
+    letter-spacing: 0.1em;
+  }
+  
+  .ring-indicator {
+    font-size: 0.55rem;
+    padding: 2px 5px;
+  }
+  
+  footer {
+    padding: 40px 20px;
+  }
+  
+  footer p {
+    font-size: 0.85rem;
+  }
+  
+  /* Modal mobile */
+  .modal-overlay {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+  
+  .modal-content {
+    max-height: none;
+  }
+  
+  .modal-header {
+    padding: 20px 20px 12px;
+  }
+  
+  .modal-letter {
+    font-size: 2rem;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-glyph-display .glyph-svg {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 400px) {
+  .glyph-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .glyph-card {
+    padding: 12px;
+  }
+  
+  .glyph-letter {
+    font-size: 1.2rem;
+  }
+  
+  .glyph-display {
+    height: 65px;
+  }
+  
+  .glyph-svg {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .glyph-name {
+    font-size: 0.6rem;
+    padding: 6px;
+  }
+}
   </style>
 </head>
 <body class="ascended-mode">
+
+  <!-- Modal -->
+<div class="modal-overlay" id="glyphModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="modal-letter" id="modalLetter">A</span>
+        <span class="modal-concept" id="modalConcept">Origin / Source</span>
+      </div>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-glyph-display" id="modalGlyphDisplay"></div>
+      <div class="modal-name" id="modalName">The Eye of God</div>
+      
+      <div class="modal-section">
+        <div class="modal-section-title">Meaning</div>
+        <p id="modalMeaning"></p>
+      </div>
+      
+      <div class="modal-section">
+        <div class="modal-section-title">In Practice</div>
+        <p id="modalPractice"></p>
+      </div>
+      
+      <div class="modal-meta">
+        <div class="modal-meta-item">
+          <span class="modal-meta-label">Ring</span>
+          <span class="modal-meta-value" id="modalRing">Outer Ring</span>
+        </div>
+        <div class="modal-meta-item">
+          <span class="modal-meta-label">Aspect</span>
+          <span class="modal-meta-value" id="modalAspect">Matter</span>
+        </div>
+        <div class="modal-meta-item">
+          <span class="modal-meta-label">Geometry</span>
+          <span class="modal-meta-value" id="modalGeometry">Triangle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
   <header>
     <h1>The Universal Resonance</h1>
@@ -1234,15 +1605,371 @@
   </footer>
 
   <script>
-    function setMode(mode) {
-      document.body.className = mode + '-mode';
-      document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelector('.mode-btn.' + mode).classList.add('active');
-      
-      // Update visible glyph names
-      document.querySelectorAll('.glyph-name').forEach(nameEl => {
-        const ascended = nameEl.querySelector('.ascended-text');
-        const dread = nameEl.querySelector('.dread-text');
+  // Glyph data with lore
+  const glyphData = {
+    'A': {
+      letter: 'A',
+      concept: 'Origin / Source',
+      geometry: 'Triangle',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Eye of God',
+      dreadName: 'The Bleeding Eye',
+      ascendedMeaning: 'The primordial point from which all creation flows. This glyph represents the singular moment of beginning—the first thought, the first breath, the first light piercing the void. It is the sacred geometry of birth itself.',
+      dreadMeaning: 'The wound that will not close. An origin corrupted, a source poisoned at its root. This glyph speaks of tainted beginnings, of things born wrong, of eyes that have seen too much and now weep eternally.',
+      ascendedPractice: 'When aligned during an Others call, this glyph anchors the caller to their truest self, preventing dissolution during contact. It is often the first glyph new practitioners learn to feel.',
+      dreadPractice: 'The Dread use this glyph to mark their victims—a psychic brand that allows them to track consciousness across dimensions. Those marked report feeling perpetually watched.'
+    },
+    'B': {
+      letter: 'B',
+      concept: 'Barrier / Wall',
+      geometry: 'Square',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'Safe Passage',
+      dreadName: 'The Breach',
+      ascendedMeaning: 'Protection made manifest. This glyph represents the boundaries that keep chaos at bay—the walls of a home, the skin of a body, the membrane between dimensions. It is safety crystallized into form.',
+      dreadMeaning: 'Every wall has a weakness. This glyph shows the inevitable failure of all barriers, the moment when protection becomes prison becomes ruin. It whispers that nothing stays safe forever.',
+      ascendedPractice: 'Used to establish psychic shields during contact. Masters can maintain this glyph\'s resonance to create temporary "clean rooms" where Dread influence cannot penetrate.',
+      dreadPractice: 'When blood touches this glyph during a Dread call, it reveals vulnerabilities—in structures, in minds, in the fabric of reality itself. Section 8 uses it to identify dimensional weak points.'
+    },
+    'F': {
+      letter: 'F',
+      concept: 'Foundation / Earth',
+      geometry: 'Hexagon',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Anchor',
+      dreadName: 'The Uprooting',
+      ascendedMeaning: 'The bedrock of existence. This glyph represents everything that grounds us—physical earth, family bonds, core beliefs. It is the stable point around which chaos swirls but cannot touch.',
+      dreadMeaning: 'Nothing is truly stable. This glyph shows foundations cracking, roots torn from soil, certainties revealed as illusions. It is the vertigo of realizing the ground was never solid.',
+      ascendedPractice: 'Callers align this glyph to maintain physical cohesion during extended contact. Without it, the body can begin to "drift"—a dangerous destabilization of molecular bonds.',
+      dreadPractice: 'The Dread speak through this glyph to induce existential terror—the sensation that everything you believed was built on nothing. It precedes madness.'
+    },
+    'G': {
+      letter: 'G',
+      concept: 'Growth / Flesh',
+      geometry: 'Branching Tree',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Flourishing',
+      dreadName: 'The Cancer',
+      ascendedMeaning: 'Life reaching toward light. This glyph embodies healthy expansion—a tree growing toward the sun, a child learning, a community thriving. It is the joy of becoming more than you were.',
+      dreadMeaning: 'Growth without purpose or limit. This glyph represents cells that forgot how to stop, thoughts that consume their thinker, hunger that cannot be sated. It is life turned against itself.',
+      ascendedPractice: 'Healers attune to this glyph to accelerate natural recovery. It cannot cure, but it can remind the body of its own capacity for renewal.',
+      dreadPractice: 'Blood sacrifices channeled through this glyph cause uncontrolled tissue growth in targets. The results are invariably fatal and deeply disturbing to witness.'
+    },
+    'H': {
+      letter: 'H',
+      concept: 'Home / Shelter',
+      geometry: 'Arch',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Hearth',
+      dreadName: 'The Ruin',
+      ascendedMeaning: 'Sanctuary made real. This glyph holds the warmth of belonging—not just a building, but the feeling of being exactly where you should be. It is refuge from the storm.',
+      dreadMeaning: 'Every home becomes a tomb. This glyph shows beloved spaces corrupted—safe places that betray, shelters that trap rather than protect. It is the horror of nowhere being safe.',
+      ascendedPractice: 'Used to consecrate spaces for ritual work. A properly attuned room can hold harmonic resonance for days, making subsequent calls safer and clearer.',
+      dreadPractice: 'The Rook Model focuses on this glyph to identify and corrupt sites of positive memory. Destroying the feeling of safety is considered essential preparation for Dread emergence.'
+    },
+    'I': {
+      letter: 'I',
+      concept: 'Identity / Self',
+      geometry: 'Vertical Line',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Pillar of Being',
+      dreadName: 'The Shattered Self',
+      ascendedMeaning: 'The singular truth of who you are. This glyph represents the unbreakable core of consciousness—the part that remains constant through all change. It is the answer to "who am I?" made visible.',
+      dreadMeaning: 'There is no "you." This glyph reveals identity as illusion—a thousand fragments pretending to be whole, each piece pulling in different directions. It is the dissolution of self.',
+      ascendedPractice: 'Critical for maintaining coherence during Others contact. Without strong alignment to this glyph, callers risk ego death—a permanent merger with the infinite.',
+      dreadPractice: 'The Dread target this glyph to induce dissociation. Victims report feeling like strangers in their own bodies, watching themselves from outside, unable to reconnect.'
+    },
+    'J': {
+      letter: 'J',
+      concept: 'Join / Bond',
+      geometry: 'Interlocking Rings',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Union',
+      dreadName: 'The Severing',
+      ascendedMeaning: 'Connection that strengthens both. This glyph embodies partnership, alliance, the miracle of two becoming more than the sum of parts. It is love, friendship, and trust made geometric.',
+      dreadMeaning: 'All bonds break. This glyph shows the tearing apart—relationships ending in betrayal, trust shattered, the agony of separation. It is the inevitability of loss.',
+      ascendedPractice: 'Used in paired calling rituals where two callers share the frequency load. The bond must be genuine; false connections cause catastrophic feedback.',
+      dreadPractice: 'Blood from two people channeled through this glyph can sever any bond between them—permanently. Even memory of affection fades.'
+    },
+    'K': {
+      letter: 'K',
+      concept: 'Kin / Blood',
+      geometry: 'Double Helix',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Bloodline',
+      dreadName: 'The Corruption',
+      ascendedMeaning: 'The sacred thread connecting generations. This glyph represents inherited gifts—not just genetics, but stories, wisdom, and love passed down through time. It is ancestry as blessing.',
+      dreadMeaning: 'Inheritance as curse. This glyph shows the sins of fathers visited upon children, corruption coded into the blood, the horror of being unable to escape what you were born from.',
+      ascendedPractice: 'Family members can establish stronger connections through this glyph. Some bloodlines carry natural frequency sensitivity—the glyph helps identify and strengthen these gifts.',
+      dreadPractice: 'Section 8 has used this glyph to trace Null bloodlines through generations. The Dread are particularly interested in corrupting frequency-sensitive lineages.'
+    },
+    'L': {
+      letter: 'L',
+      concept: 'Land / Territory',
+      geometry: 'Horizon Line',
+      ring: 'Outer Ring',
+      aspect: 'Matter',
+      ascendedName: 'The Dominion',
+      dreadName: 'The Wasteland',
+      ascendedMeaning: 'Sacred stewardship of place. This glyph represents the bond between people and land—not ownership, but belonging. It is the horizon promising new dawns, territory as responsibility.',
+      dreadMeaning: 'All lands become dust. This glyph shows the end of cultivation—salted earth, poisoned wells, places where nothing will ever grow again. It is environmental despair made visible.',
+      ascendedPractice: 'Ley line workers attune to this glyph to map energy flows across terrain. Strong alignment reveals optimal sites for harmonic work.',
+      dreadPractice: 'The Dread mark territory through this glyph, claiming regions for future emergence. Marked lands show subtle wrongness—plants grow at odd angles, animals behave erratically.'
+    },
+    'C': {
+      letter: 'C',
+      concept: 'Consciousness',
+      geometry: 'Spiral',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'Expansion',
+      dreadName: 'The Devouring',
+      ascendedMeaning: 'Awareness reaching outward. This glyph represents the mind growing beyond its boundaries—enlightenment, understanding, the spiral of consciousness expanding toward infinity.',
+      dreadMeaning: 'A mind that cannot stop consuming. This glyph shows consciousness turned predatory, devouring everything it touches including itself. It is awareness as endless hunger.',
+      ascendedPractice: 'The 6th position for Dread calls, but the critical alignment point for reaching the Others. Masters describe feeling their consciousness "unfold" when properly aligned.',
+      dreadPractice: 'The Dread speak most clearly through this glyph. It is the primary channel for their influence—and the most dangerous to maintain. Extended alignment causes permanent expansion of perception.'
+    },
+    'E': {
+      letter: 'E',
+      concept: 'Energy',
+      geometry: 'Wave',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'Harmonic Flow',
+      dreadName: 'Static / Dissonance',
+      ascendedMeaning: 'Pure force in motion. This glyph embodies energy in its most fundamental state—neither created nor destroyed, only transformed. It is the pulse beneath all existence.',
+      dreadMeaning: 'Chaos in the signal. This glyph shows energy corrupted—static that drowns meaning, dissonance that shatters harmony. It is the noise that drives minds to breaking.',
+      ascendedPractice: 'The foundational glyph for all frequency work. Callers learn to feel its rhythm first, using it as a baseline for all subsequent attunements.',
+      dreadPractice: 'When misaligned, this glyph causes the spontaneous combustion effect. The energy has nowhere to go and converts to heat instantaneously.'
+    },
+    'M': {
+      letter: 'M',
+      concept: 'Motion / Change',
+      geometry: 'Arrow',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'The Current',
+      dreadName: 'The Reversal',
+      ascendedMeaning: 'Forward momentum. This glyph represents progress, growth, the arrow of time pointing toward possibility. It is change as opportunity, motion as life itself.',
+      dreadMeaning: 'Everything runs backward. This glyph shows progress undone, evolution reversed, the horror of moving inexorably toward a worse past. It is entropy accelerated.',
+      ascendedPractice: 'Used to maintain temporal coherence during contact. Without it, callers can experience time dilation—minutes feeling like hours, or the reverse.',
+      dreadPractice: 'The Dread use this glyph to induce temporal dysphoria in victims—the sensation that time is moving wrong, that reality is slowly unwinding.'
+    },
+    'N': {
+      letter: 'N',
+      concept: 'Nexus / Connection',
+      geometry: 'Six-Point Star',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'The Web',
+      dreadName: 'The Trap',
+      ascendedMeaning: 'The point where all threads meet. This glyph represents the interconnection of all things—the realization that separation is illusion, that we are all nodes in an infinite web.',
+      dreadMeaning: 'Connection as prison. This glyph shows the web as trap—every thread a chain, every connection a vulnerability. It is the horror of being unable to disconnect.',
+      ascendedPractice: 'Critical for establishing stable contact. This glyph creates the "bridge" between dimensions, allowing communication without physical crossover.',
+      dreadPractice: 'The Pontis Initiative chose their name based on this glyph. They believe creating permanent bridges will allow controlled Dread emergence.'
+    },
+    'O': {
+      letter: 'O',
+      concept: 'Opening / Portal',
+      geometry: 'Circle',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'The Gate',
+      dreadName: 'The Maw',
+      ascendedMeaning: 'Threshold to the beyond. This glyph represents doorways—not just physical, but conceptual. It is possibility, opportunity, the circle that frames new worlds.',
+      dreadMeaning: 'The mouth that never closes. This glyph shows the portal as predator—an opening that consumes whatever approaches, a gate that only opens inward. It is invitation as digestion.',
+      ascendedPractice: 'The 9th Order glyph—the final alignment for Others contact. Properly aligned, it opens perception to the higher dimensions where They exist.',
+      dreadPractice: 'When the Maw manifests, it creates localized reality tears. Small objects disappear. Sometimes small animals. Section 8 monitors for Maw signatures globally.'
+    },
+    'P': {
+      letter: 'P',
+      concept: 'Power / Force',
+      geometry: 'Crossed Lines',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'The Crucible',
+      dreadName: 'The Breaking Point',
+      ascendedMeaning: 'Strength refined through pressure. This glyph represents power earned—not given, but forged through trial. It is the intersection where challenge becomes capability.',
+      dreadMeaning: 'The moment before shattering. This glyph shows force exceeding tolerance—the instant when strength becomes weakness, when pushing further means destruction.',
+      ascendedPractice: 'Used to amplify caller will during difficult alignments. The glyph channels determination, helping maintain focus through the physical pain of the ritual.',
+      dreadPractice: 'The Dread test limits through this glyph. They push until something breaks—usually the caller\'s sanity, sometimes their body, occasionally the local laws of physics.'
+    },
+    'Q': {
+      letter: 'Q',
+      concept: 'Quiet / Stillness',
+      geometry: 'Empty Circle',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'The Pause',
+      dreadName: 'The Silence That Screams',
+      ascendedMeaning: 'Sacred emptiness. This glyph represents the stillness between heartbeats, the pause between thoughts—the pregnant void where potential gathers before manifestation.',
+      dreadMeaning: 'Absence that has weight. This glyph shows silence as pressure—the quiet that precedes disaster, the calm that is not peace but paralysis. It is the scream that cannot escape.',
+      ascendedPractice: 'Meditation focus for callers learning to feel the Sonic Snap. The glyph teaches the difference between absence of sound and presence of silence.',
+      dreadPractice: 'Victims touched by this glyph lose the ability to make sound. The paralysis can last hours or, in severe cases, becomes permanent.'
+    },
+    'R': {
+      letter: 'R',
+      concept: 'Resonance / Harmony',
+      geometry: 'Tuning Fork',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'The Chord',
+      dreadName: 'The Dissonance',
+      ascendedMeaning: 'Vibrations in perfect alignment. This glyph represents harmony—not just musical, but cosmic. It is the moment when frequencies synchronize and reality sings.',
+      dreadMeaning: 'Frequencies at war. This glyph shows harmony destroyed—notes that clash, vibrations that cancel and amplify chaotically. It is the sound of reality disagreeing with itself.',
+      ascendedPractice: 'The theoretical heart of all dial work. Understanding this glyph means understanding that reality is frequency, and frequency can be tuned.',
+      dreadPractice: 'The Rook Model weaponizes this glyph\'s inverse. The water in the middle ring vibrating "wrong" creates frequencies that damage human neurology at the cellular level.'
+    },
+    'S': {
+      letter: 'S',
+      concept: 'Sound / Voice',
+      geometry: 'Wave Crest',
+      ring: 'Middle Ring',
+      aspect: 'Energy',
+      ascendedName: 'The Song',
+      dreadName: 'The Scream',
+      ascendedMeaning: 'Expression given form. This glyph represents the voice—not just speech, but all communication. It is the wave that carries meaning from one consciousness to another.',
+      dreadMeaning: 'Voice as violation. This glyph shows sound weaponized—the scream that shatters, the word that wounds, communication as assault. It is expression turned against its purpose.',
+      ascendedPractice: 'The Others communicate through this glyph\'s frequency. Their "singing" is perceived here—the beautiful, terrible transmission that callers describe as life-changing.',
+      dreadPractice: 'The Dread speak through the caller\'s larynx when this glyph activates. The possession often causes permanent vocal damage. Some callers never speak normally again.'
+    },
+    'D': {
+      letter: 'D',
+      concept: 'Death / End',
+      geometry: 'Terminal Line',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'Ascension',
+      dreadName: 'The Fall',
+      ascendedMeaning: 'Transformation through ending. This glyph represents death as doorway—not cessation, but transition. It is the curve that rises, the end that enables new beginning.',
+      dreadMeaning: 'The plunge with no bottom. This glyph shows ending as pure loss—no transformation, no continuation, only the endless fall into nothing. It is death as absolute negation.',
+      ascendedPractice: 'Used in the first triad of the Others call. Alignment with Ascension signals willingness to transcend—to let go of ego for connection with the infinite.',
+      dreadPractice: 'The first Dread alignment (presses 1-3) locks to Death runes. The caller must embrace destruction to establish connection. Many do not survive this phase.'
+    },
+    'T': {
+      letter: 'T',
+      concept: 'Time / Cycle',
+      geometry: 'Ouroboros',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Eternal',
+      dreadName: 'The Decay',
+      ascendedMeaning: 'The circle that holds all moments. This glyph represents time as illusion—past, present, and future existing simultaneously in an eternal now. It is the serpent holding its tail gently.',
+      dreadMeaning: 'The serpent that devours itself. This glyph shows time as consumption—each moment eating the last, the future cannibalizing the present. It is eternity as endless dissolution.',
+      ascendedPractice: 'Advanced callers use this glyph to perceive outside linear time during contact. Visions of possible futures and probable pasts become accessible.',
+      dreadPractice: 'The Dread exist outside time as we understand it. This glyph is their native frequency—touching it means touching their timeless hunger directly.'
+    },
+    'U': {
+      letter: 'U',
+      concept: 'Unknown / Mystery',
+      geometry: 'Cloud/Blur',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Veil',
+      dreadName: 'The Lie',
+      ascendedMeaning: 'Holy mystery. This glyph represents the unknown as sacred—the soft boundary between knowledge and wonder. It is the luminous cloud that invites exploration.',
+      dreadMeaning: 'Deception given form. This glyph shows the unknown as trap—mystery that hides malice, veils concealing teeth. It is the lie wearing the mask of mystery.',
+      ascendedPractice: 'Callers touch this glyph when receiving information beyond human comprehension. It buffers the mind, translating the untranslatable into survivable metaphor.',
+      dreadPractice: 'The Dread hide their true nature behind this glyph. What callers perceive during contact is filtered through the Lie—the reality would destroy human perception instantly.'
+    },
+    'V': {
+      letter: 'V',
+      concept: 'Void / Nothing',
+      geometry: 'Negative Space',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Rest',
+      dreadName: 'The Hunger',
+      ascendedMeaning: 'Emptiness as peace. This glyph represents the void as sanctuary—the restful nothing between thoughts, the peaceful absence that allows presence. It is rest without end.',
+      dreadMeaning: 'Emptiness that wants. This glyph shows the void as appetite—nothingness that craves something, absence defined by its desperate need to consume. It is hunger without body.',
+      ascendedPractice: 'Part of the Dread alignment sequence (7-9). Paradoxically, understanding peaceful void helps callers survive contact with hungry void.',
+      dreadPractice: 'The Hunger is what the Dread serve—or perhaps what they are. This glyph is their purpose made visible: to feed the nothing that should not want.'
+    },
+    'W': {
+      letter: 'W',
+      concept: 'Will / Intent',
+      geometry: 'Flame',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Purpose',
+      dreadName: 'The Obsession',
+      ascendedMeaning: 'Directed desire. This glyph represents will as sacred fire—intention that illuminates, purpose that warms. It is the flame reaching upward toward its natural element.',
+      dreadMeaning: 'Desire that consumes its source. This glyph shows will turned inward—obsession that burns downward, purpose that devours the one who holds it. It is want become self-destruction.',
+      ascendedPractice: 'The driving force behind successful calls. Without strong alignment to Purpose, the caller lacks the focus needed to maintain connection through pain and terror.',
+      dreadPractice: 'The Dread amplify obsession through this glyph. Targets find their desires growing beyond control—wanting things they shouldn\'t, unable to stop pursuing them.'
+    },
+    'X': {
+      letter: 'X',
+      concept: 'Crossing / Threshold',
+      geometry: 'Intersection',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Choice',
+      dreadName: 'The Scar',
+      ascendedMeaning: 'The sacred intersection. This glyph represents the moment of decision—where paths cross and choice determines destiny. It is the light at the junction, the gift of agency.',
+      dreadMeaning: 'The wound that marks forever. This glyph shows crossing as damage—the scar left where things that should not touch have touched. It is decision as permanent injury.',
+      ascendedPractice: 'Critical transition glyph during both call types. The Choice determines whether the caller connects with the Others or the Dread—intent becomes manifest here.',
+      dreadPractice: 'Every dial use leaves a Scar on reality. Enough scars in one location create a permanent weak point. The Pontis Initiative has been deliberately scarring sites for decades.'
+    },
+    'Y': {
+      letter: 'Y',
+      concept: 'Yield / Surrender',
+      geometry: 'Open Hands',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Offering',
+      dreadName: 'The Taking',
+      ascendedMeaning: 'Sacred gift. This glyph represents surrender as strength—the open hands that give freely, the yield that enables rather than defeats. It is offering without expectation.',
+      dreadMeaning: 'Surrender as theft. This glyph shows yielding as loss—hands that close like jaws, surrender that is actually seizure. It is the offering taken by force.',
+      ascendedPractice: 'The final ego release before Others contact. The caller must genuinely offer themselves—their fear, their desire, their very identity—to receive the Word.',
+      dreadPractice: 'The Taking is literal during Dread calls. Blood, sanity, years of life—the dial takes what it needs. The caller has no choice; they already surrendered when they began.'
+    },
+    'Z': {
+      letter: 'Z',
+      concept: 'Zero / Null',
+      geometry: 'Empty Set',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Reset',
+      dreadName: 'The Annihilation',
+      ascendedMeaning: 'Return to origin. This glyph represents zero as possibility—the blank slate, the fresh start, the balanced equation ready to solve. It is nothing as potential for everything.',
+      dreadMeaning: 'Destruction without remainder. This glyph shows zero as erasure—not reset but removal, not blank but blasted. It is the null that negates, leaving nothing to rebuild.',
+      ascendedPractice: 'Used to clear corrupted frequency spaces. The Reset can purge Dread influence from locations, though the process is exhausting and risky.',
+      dreadPractice: 'Annihilation is the Dread\'s gift to their most devoted callers. Complete erasure from reality—not death, but removal from existence itself. Some consider it mercy.'
+    },
+    'Ω': {
+      letter: 'Ω',
+      concept: 'Omega / Totality',
+      geometry: 'Encompassing Arc',
+      ring: 'Inner Ring',
+      aspect: 'Void',
+      ascendedName: 'The Completion',
+      dreadName: 'The Collapse',
+      ascendedMeaning: 'Everything held in unity. This glyph represents the end that contains all—the arc that holds reality together, the omega that gives meaning to alpha. It is completion as embrace.',
+      dreadMeaning: 'Everything crushed into nothing. This glyph shows totality as destruction—the arc that closes to strangle, the end that annihilates all that came before. It is completion as extinction.',
+      ascendedPractice: 'The 27th glyph (3³)—the completion of sacred geometry. Full alignment with Omega during Others contact reportedly allows perception of the complete pattern of reality.',
+      dreadPractice: 'The Collapse is the Dread\'s ultimate goal. Total reality failure, dimensional barriers destroyed, the hungry void given access to everything. The Pontis Initiative believes they can control it. They are wrong.'
+    }
+  };
+
+  function setMode(mode) {
+    document.body.className = mode + '-mode';
+    document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.mode-btn.' + mode).classList.add('active');
+    
+    // Update visible glyph names
+    document.querySelectorAll('.glyph-name').forEach(nameEl => {
+      const ascended = nameEl.querySelector('.ascended-text');
+      const dread = nameEl.querySelector('.dread-text');
+      if (ascended && dread) {
         if (mode === 'ascended') {
           ascended.style.display = 'inline';
           dread.style.display = 'none';
@@ -1250,12 +1977,98 @@
           ascended.style.display = 'none';
           dread.style.display = 'inline';
         }
-      });
+      }
+    });
+    
+    // Update modal if open
+    const modal = document.getElementById('glyphModal');
+    if (modal.classList.contains('active')) {
+      const letter = document.getElementById('modalLetter').textContent;
+      updateModalContent(letter);
     }
+  }
 
-    // Initialize
-    setMode('ascended');
-  </script>
+  function openModal(letter) {
+    const modal = document.getElementById('glyphModal');
+    updateModalContent(letter);
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('glyphModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateModalContent(letter) {
+    const data = glyphData[letter];
+    if (!data) return;
+    
+    const isAscended = document.body.classList.contains('ascended-mode');
+    
+    document.getElementById('modalLetter').textContent = data.letter;
+    document.getElementById('modalConcept').textContent = data.concept;
+    document.getElementById('modalRing').textContent = data.ring;
+    document.getElementById('modalAspect').textContent = data.aspect;
+    document.getElementById('modalGeometry').textContent = data.geometry;
+    
+    document.getElementById('modalName').textContent = isAscended ? data.ascendedName : data.dreadName;
+    document.getElementById('modalMeaning').textContent = isAscended ? data.ascendedMeaning : data.dreadMeaning;
+    document.getElementById('modalPractice').textContent = isAscended ? data.ascendedPractice : data.dreadPractice;
+    
+    // Copy the SVG from the card
+    const card = document.querySelector(`.glyph-card .glyph-letter`);
+    let targetCard = null;
+    document.querySelectorAll('.glyph-card').forEach(c => {
+      if (c.querySelector('.glyph-letter')?.textContent === letter) {
+        targetCard = c;
+      }
+    });
+    
+    if (targetCard) {
+  const display = targetCard.querySelector('.glyph-display');
+  const modalDisplay = document.getElementById('modalGlyphDisplay');
+  modalDisplay.innerHTML = display.innerHTML;
+  
+  // Apply correct visibility based on current mode
+  const isAscended = document.body.classList.contains('ascended-mode');
+  modalDisplay.querySelectorAll('.ascended-glyph').forEach(el => {
+    el.style.opacity = isAscended ? '1' : '0';
+    el.style.position = isAscended ? 'relative' : 'absolute';
+  });
+  modalDisplay.querySelectorAll('.dread-glyph').forEach(el => {
+    el.style.opacity = isAscended ? '0' : '1';
+    el.style.position = isAscended ? 'absolute' : 'relative';
+  });
+}
+  }
+
+  // Close modal on overlay click
+  document.getElementById('glyphModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  // Add click handlers to all glyph cards
+  document.querySelectorAll('.glyph-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const letter = this.querySelector('.glyph-letter').textContent;
+      openModal(letter);
+    });
+  });
+
+  // Initialize
+  setMode('ascended');
+</script>
 
 </body>
 </html>
